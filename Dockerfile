@@ -13,7 +13,7 @@ RUN echo 'ACCEPT_KEYWORDS="~amd64"' >> /etc/portage/make.conf && \
     echo 'sys-devel/binutils -nls' > /etc/portage/package.use/binutils && \
     echo 'sys-devel/gcc -nls graphite' > /etc/portage/package.use/gcc
 
-RUN emerge --sync && emerge -1 -j linux-headers binutils glibc gcc && emerge --depclean gcc && emerge distcc && rm -rf /usr/portage/*
+RUN emerge --sync && emerge -1 -j gcc-config linux-headers binutils glibc gcc && emerge --depclean gcc && gcc-config 1 && env-update && source /etc/profile && emerge distcc && rm -rf /usr/portage/*
 
 RUN ( \
     echo '#!/bin/sh' && \
