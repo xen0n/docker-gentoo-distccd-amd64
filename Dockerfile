@@ -18,7 +18,7 @@ RUN emerge --sync && emerge -1 -j gcc-config linux-headers binutils glibc gcc &&
 RUN ( \
     echo '#!/bin/sh' && \
     echo '. /etc/profile' && \
-    echo 'exec distccd $@'
+    echo 'exec distccd $@' \
     ) > /usr/local/sbin/distccd-launcher && \
     chmod a+x /usr/local/sbin/distccd-launcher
 
